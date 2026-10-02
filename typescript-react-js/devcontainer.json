@@ -1,0 +1,30 @@
+{
+	"name": "type-script",
+	"dockerFile": "Dockerfile",
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"terminal.integrated.shell.linux": "/bin/bash",
+				"dev.containers.mountWaylandSocket": false,
+				"editor.defaultFormatter": "esbenp.prettier-vscode",
+				"[typescript]": {
+					"editor.defaultFormatter": "esbenp.prettier-vscode"
+				},
+				"[javascript]": {
+					"editor.defaultFormatter": "esbenp.prettier-vscode"
+				},
+			},
+			"extensions": [
+				"PKief.material-icon-theme",
+				"esbenp.prettier-vscode",
+				"ms-vscode-remote.remote-containers",
+				"GitHub.copilot", // GitHub Copilot
+				"ms-azuretools.vscode-docker", // Docker
+				"dsznajder.es7-react-js-snippets",
+				"bradlc.vscode-tailwindcss",
+				"Anthropic.claude-code"
+			],
+			"workbench.iconTheme": "material-icon-theme"
+		}
+	}
+}

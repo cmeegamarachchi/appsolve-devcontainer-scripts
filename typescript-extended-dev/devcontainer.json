@@ -1,0 +1,38 @@
+{
+  "name": "TypeScript Extended Dev",
+  "dockerComposeFile": "docker-compose.yml",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+      "moby": "false"
+    },
+    "ghcr.io/devcontainers/features/common-utils:2": {}
+  },  
+  "service": "app",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "workbench.iconTheme": "material-icon-theme",
+        "git.openRepositoryInParentFolders": "always",
+        "dev.containers.mountWaylandSocket": false
+      },
+      "extensions": [
+        "PKief.material-icon-theme",
+        "esbenp.prettier-vscode",
+        "ms-mssql.mssql",
+        "GitHub.copilot",
+        "GitHub.copilot-chat",
+        "ms-mssql.sql-database-projects-vscode",
+        "rangav.vscode-thunder-client",
+        "mhutchie.git-graph",
+        "Anthropic.claude-code"
+      ]
+    }
+  },
+  "remoteUser": "node",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "postCreateCommand": "sudo chown -R node:node ${containerWorkspaceFolder}",
+  "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder} && git config credential.useHttpPath true",
+  "mounts": [
+    "source=/q/projects/,target=/external,type=bind"
+  ]
+}

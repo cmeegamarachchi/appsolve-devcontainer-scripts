@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  app:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+
+    command: sleep infinity
+
+  rocsii-cache:
+    image: mcr.microsoft.com/mssql/server:2025-latest
+    container_name: rocsii-cache
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=changeThisCrazyPassword@54
+    volumes:
+      - ${ROCSCACHE_BASE}/data:/var/opt/mssql/data:z
+      - ${ROCSCACHE_BASE}/log:/var/opt/mssql/log:z
+      - ${ROCSCACHE_BASE}/secrets:/var/opt/mssql/secrets:z
+    ports:
+      - "1434:1433"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+    restart: unless-stopped
